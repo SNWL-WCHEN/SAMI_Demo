@@ -1392,10 +1392,7 @@ body { font-size: 15px !important; }
 
 
 /* ── SAMI Recommendations widget ── */
-.sami-recs-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 14px; margin-bottom: 22px;
-}
+
 .sami-rec-card {
   background: var(--white); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 18px 20px;
@@ -1725,227 +1722,151 @@ html, body { height: 100%; overflow: hidden; }
 .mkt-feat-body  { font-size: 12px; color: var(--text-2); line-height: 1.45; }
 
 
-/* ════════════════════════════════════════════════════════
-   ELEVATE 2026 GUIDED DEMO LAYER
-   ════════════════════════════════════════════════════════ */
 
-/* ── Splash screen ── */
-.demo-splash {
-  position: fixed; inset: 0; z-index: 10000;
-  background: linear-gradient(135deg, #0F0C29 0%, #1E1B4B 50%, #24243e 100%);
-  display: flex; align-items: center; justify-content: center;
-  flex-direction: column; gap: 0;
-  font-family: var(--font);
-}
-.demo-splash-logo {
-  width: 80px; height: 80px; border-radius: 24px;
-  background: linear-gradient(135deg, #F97316, #EA580C);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 40px; font-weight: 900; color: white;
-  margin-bottom: 24px;
-  box-shadow: 0 8px 32px rgba(249,115,22,0.4);
-}
-.demo-splash-title {
-  font-size: 36px; font-weight: 900; color: white;
-  letter-spacing: -0.03em; margin-bottom: 8px; text-align: center;
-}
-.demo-splash-sub {
-  font-size: 16px; color: rgba(255,255,255,0.6);
-  margin-bottom: 40px; text-align: center;
-}
-.demo-splash-audience {
-  display: flex; gap: 16px; margin-bottom: 20px;
-}
-.demo-audience-btn {
-  padding: 16px 32px; border-radius: 16px; border: 2px solid rgba(255,255,255,0.2);
-  background: rgba(255,255,255,0.08); color: white; cursor: pointer;
-  font-family: var(--font); font-size: 15px; font-weight: 700;
-  transition: all 0.2s; text-align: center; min-width: 180px;
-}
-.demo-audience-btn:hover { border-color: var(--orange); background: rgba(249,115,22,0.15); }
-.demo-audience-btn.selected { border-color: var(--orange); background: var(--orange); }
-.demo-audience-icon { font-size: 28px; display: block; margin-bottom: 6px; }
-.demo-start-btn {
-  padding: 14px 40px; border-radius: 50px;
-  background: var(--orange); color: white;
-  font-family: var(--font); font-size: 16px; font-weight: 800;
-  border: none; cursor: pointer;
-  box-shadow: 0 4px 20px rgba(249,115,22,0.4);
-  transition: all 0.2s; margin-top: 8px;
-  display: none;
-}
-.demo-start-btn.visible { display: block; }
-.demo-start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(249,115,22,0.5); }
-.demo-elevate-badge {
-  position: absolute; top: 24px; right: 24px;
-  background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-  color: white; padding: 6px 14px; border-radius: 20px;
-  font-size: 12px; font-weight: 700; letter-spacing: 0.08em;
+
+
+/* ── SAMI Recs Grid — 4-column single row ── */
+.sami-recs-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
 }
 
-/* ── Demo toolbar ── */
-.demo-toolbar {
-  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9000;
-  background: rgba(15,12,41,0.96);
-  backdrop-filter: blur(12px);
-  border-top: 1px solid rgba(255,255,255,0.1);
+/* ── New compact card design ── */
+.sami-rec-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
   padding: 0;
-  display: none;
-  flex-direction: column;
-  max-height: 320px;
-  transition: max-height 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
-.demo-toolbar.active { display: flex; }
-.demo-toolbar.collapsed { max-height: 52px; }
+.sami-rec-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.09);
+}
 
-/* Progress bar */
-.demo-progress-bar {
+/* Top accent bar */
+.src-accent {
   height: 3px;
-  background: rgba(255,255,255,0.1);
-  flex-shrink: 0;
-}
-.demo-progress-fill {
-  height: 100%;
-  background: var(--orange);
-  transition: width 0.4s ease;
+  width: 100%;
 }
 
-/* Toolbar header */
-.demo-toolbar-head {
-  display: flex; align-items: center; gap: 12px;
-  padding: 10px 20px;
-  flex-shrink: 0;
-}
-.demo-step-counter {
-  font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.4);
-  text-transform: uppercase; letter-spacing: 0.1em;
-}
-.demo-step-title {
-  font-size: 14px; font-weight: 800; color: white; flex: 1;
-}
-.demo-audience-pill {
-  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 10px;
-  text-transform: uppercase; letter-spacing: 0.08em;
-}
-.dap-partner  { background: rgba(249,115,22,0.2); color: #FB923C; border: 1px solid rgba(249,115,22,0.3); }
-.dap-customer { background: rgba(99,102,241,0.2); color: #818CF8; border: 1px solid rgba(99,102,241,0.3); }
-.demo-toolbar-btns { display: flex; gap: 8px; }
-.demo-nav-btn {
-  padding: 6px 14px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15);
-  background: transparent; color: white; cursor: pointer;
-  font-family: var(--font); font-size: 12px; font-weight: 700;
-  transition: all 0.15s;
-}
-.demo-nav-btn:hover { background: rgba(255,255,255,0.1); }
-.demo-nav-btn.primary { background: var(--orange); border-color: var(--orange); }
-.demo-nav-btn.primary:hover { background: #EA580C; }
-.demo-collapse-btn {
-  width: 28px; height: 28px; border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: transparent; color: rgba(255,255,255,0.6);
-  cursor: pointer; font-size: 14px; display: flex;
-  align-items: center; justify-content: center;
+/* Card inner padding wrapper */
+.sami-rec-card .src-top,
+.sami-rec-card .src-hero,
+.sami-rec-card .src-hero-label,
+.sami-rec-card .src-mini-stats,
+.sami-rec-card .src-cta {
+  padding-left: 14px;
+  padding-right: 14px;
 }
 
-/* Toolbar body */
-.demo-toolbar-body {
-  padding: 0 20px 16px;
-  overflow-y: auto;
-  flex: 1;
-}
-.demo-toolbar.collapsed .demo-toolbar-body { display: none; }
-
-/* Talking points */
-.demo-tp-tabs {
-  display: flex; gap: 0; margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
-.demo-tp-tab {
-  padding: 6px 14px; border: none; background: transparent;
-  color: rgba(255,255,255,0.4); cursor: pointer;
-  font-family: var(--font); font-size: 11px; font-weight: 700;
-  text-transform: uppercase; letter-spacing: 0.08em;
-  border-bottom: 2px solid transparent; margin-bottom: -1px;
-  transition: all 0.15s;
-}
-.demo-tp-tab.active { color: var(--orange); border-bottom-color: var(--orange); }
-.demo-tp-panel { display: none; }
-.demo-tp-panel.active { display: block; }
-.demo-tp-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
-.demo-tp-item {
-  display: flex; gap: 8px; align-items: flex-start;
-  font-size: 12.5px; color: rgba(255,255,255,0.8); line-height: 1.5;
-}
-.demo-tp-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--orange); flex-shrink: 0; margin-top: 6px;
-}
-.demo-why {
-  background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.2);
-  border-radius: 8px; padding: 8px 12px; margin-top: 10px;
-  font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5;
-}
-.demo-why-label {
-  font-size: 10px; font-weight: 800; color: var(--orange);
-  text-transform: uppercase; letter-spacing: 0.1em;
-  display: block; margin-bottom: 4px;
+.src-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 12px;
+  padding-bottom: 8px;
 }
 
-/* ── Spotlight overlay ── */
-.demo-spotlight {
-  position: fixed; inset: 0; z-index: 8000;
-  pointer-events: none;
-  transition: all 0.4s ease;
+.src-icon-wrap {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
 }
-.demo-spotlight-cutout {
-  position: absolute;
+
+/* Status badge */
+.src-badge {
+  font-size: 10px; font-weight: 800;
+  padding: 3px 8px; border-radius: 10px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.src-badge-red    { background: var(--red-bg);    color: var(--red);    border: 1px solid var(--red-border); }
+.src-badge-indigo { background: var(--indigo-bg); color: var(--indigo); border: 1px solid var(--indigo-border); }
+.src-badge-blue   { background: var(--blue-bg);   color: var(--blue);   border: 1px solid #BFDBFE; }
+.src-badge-orange { background: var(--orange-bg); color: var(--orange); border: 1px solid var(--orange-border); }
+
+/* Hero number */
+.src-hero {
+  font-size: 36px;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Hero label */
+.src-hero-label {
+  font-size: 9.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-3);
+  margin-bottom: 10px;
+}
+
+/* Mini stats row */
+.src-mini-stats {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
   border-radius: 8px;
-  box-shadow: 0 0 0 9999px rgba(0,0,0,0.55);
-  border: 2px solid var(--orange);
-  transition: all 0.4s ease;
-  pointer-events: none;
+  padding: 7px 10px;
+  margin-bottom: 10px;
+  gap: 0;
+}
+.src-mini-stat {
+  flex: 1;
+  text-align: center;
+}
+.src-mini-val {
+  display: block;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--text-1);
+  font-variant-numeric: tabular-nums;
+}
+.src-mini-lbl {
+  display: block;
+  font-size: 9px;
+  font-weight: 600;
+  color: var(--text-4);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 1px;
+  white-space: nowrap;
+}
+.src-mini-div {
+  width: 1px;
+  height: 24px;
+  background: var(--border);
+  flex-shrink: 0;
+  margin: 0 4px;
 }
 
-/* ── Reset button ── */
-.demo-reset-btn {
-  padding: 6px 12px; border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: transparent; color: rgba(255,255,255,0.4);
-  cursor: pointer; font-family: var(--font); font-size: 11px;
-  transition: all 0.15s;
+/* CTA link */
+.src-cta {
+  font-size: 12px;
+  font-weight: 700;
+  padding-bottom: 13px;
+  display: block;
 }
-.demo-reset-btn:hover { color: white; border-color: rgba(255,255,255,0.4); }
 
-/* ── Leave-behind overlay ── */
-.demo-leave-behind {
-  display: none; position: fixed; inset: 0; z-index: 11000;
-  background: rgba(0,0,0,0.7); backdrop-filter: blur(8px);
-  align-items: center; justify-content: center;
+
+/* ── Widget sparklines ── */
+.src-spark-wrap {
+  padding: 0 14px 8px;
+  height: 44px;
+  position: relative;
 }
-.demo-leave-behind.open { display: flex; }
-.demo-lb-card {
-  background: white; border-radius: 24px; padding: 32px 36px;
-  max-width: 500px; width: 90%; text-align: center;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-}
-.demo-lb-logo { font-size: 32px; margin-bottom: 12px; }
-.demo-lb-title { font-size: 22px; font-weight: 900; color: #111; margin-bottom: 6px; letter-spacing: -0.02em; }
-.demo-lb-sub { font-size: 13px; color: #666; margin-bottom: 24px; }
-.demo-lb-stats {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 16px;
-  background: #F9FAFB; border-radius: 16px; padding: 20px; margin-bottom: 24px;
-}
-.demo-lb-stat-val { font-size: 28px; font-weight: 900; color: #F97316; display: block; }
-.demo-lb-stat-lbl { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9CA3AF; }
-.demo-lb-cta { font-size: 13px; color: #6B7280; margin-bottom: 20px; }
-.demo-lb-url {
-  display: inline-block; padding: 10px 24px; border-radius: 50px;
-  background: #F97316; color: white; font-weight: 800; font-size: 13px;
-  text-decoration: none; margin-bottom: 16px;
-}
-.demo-lb-close {
-  display: block; border: none; background: transparent; color: #9CA3AF;
-  cursor: pointer; font-size: 13px; font-family: var(--font);
+.src-spark {
+  width: 100% !important;
+  height: 44px !important;
+  display: block;
 }
 
 </style>
@@ -2160,55 +2081,95 @@ html, body { height: 100%; overflow: hidden; }
             <!-- SAMI Recommendations -->
             <div class="sami-recs-grid">
 
-              <!-- Renewal Recommendations card -->
-              <div class="sami-rec-card sami-rec-renewal" onclick="openRecModal('renewalRec')">
-                <div class="sami-rec-header">
-                  <div class="sami-rec-icon-wrap" style="background:var(--orange-bg);color:var(--orange);">💰</div>
-                  <div>
-                    <div class="sami-rec-title">Upcoming Renewals</div>
-                    <div class="sami-rec-sub">SAMI-identified opportunities</div>
-                  </div>
-                  <div class="sami-rec-caret">↗</div>
-                </div>
-                <div class="sami-rec-hero">
-                  <div class="sami-rec-num">$287K</div>
-                  <div class="sami-rec-num-label">ARR at renewal risk</div>
-                </div>
-                <div class="sami-rec-stats">
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val urgent">4</span><span class="sami-rec-stat-lbl">Expiring ≤ 30 days</span></div>
-                  <div class="sami-rec-stat-div"></div>
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val">3</span><span class="sami-rec-stat-lbl">Pre-built SKUs ready</span></div>
-                  <div class="sami-rec-stat-div"></div>
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val green">$142K</span><span class="sami-rec-stat-lbl">Protected this week</span></div>
-                </div>
-                <div class="sami-rec-cta">View upcoming renewals →</div>
-              </div>
+  <!-- 1. CVE Vulnerabilities -->
+  <div class="sami-rec-card sami-rec-cve" onclick="openRecModal('cveRec')">
+    <div class="src-accent" style="background:var(--red);"></div>
+    <div class="src-top">
+      <div class="src-icon-wrap" style="background:rgba(239,68,68,0.12);">
+        <span style="font-size:18px;">🔍</span>
+      </div>
+      <div class="src-badge src-badge-red">2 Critical</div>
+    </div>
+    <div class="src-hero" style="color:var(--red);">5</div>
+    <div class="src-hero-label">CVE VULNERABILITIES</div>
+    <div class="src-spark-wrap"><canvas class="src-spark" id="sparkCve"></canvas></div>
+    <div class="src-mini-stats">
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--red);">2</span><span class="src-mini-lbl">Critical</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--amber);">3</span><span class="src-mini-lbl">High</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--green);">3</span><span class="src-mini-lbl">Patches ready</span></div>
+    </div>
+    <div class="src-cta" style="color:var(--red);">View CVE report →</div>
+  </div>
 
-              <!-- Policy Recommendations card -->
-              <div class="sami-rec-card sami-rec-policy" onclick="openRecModal('policyRec')">
-                <div class="sami-rec-header">
-                  <div class="sami-rec-icon-wrap" style="background:var(--red-bg);color:var(--red);">🛡️</div>
-                  <div>
-                    <div class="sami-rec-title">Policy Recommendations</div>
-                    <div class="sami-rec-sub">Security posture improvements</div>
-                  </div>
-                  <div class="sami-rec-caret">↗</div>
-                </div>
-                <div class="sami-rec-hero">
-                  <div class="sami-rec-num" style="color:var(--red);">6</div>
-                  <div class="sami-rec-num-label">Policies flagged across tenants</div>
-                </div>
-                <div class="sami-rec-stats">
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val urgent">3</span><span class="sami-rec-stat-lbl">Critical risk</span></div>
-                  <div class="sami-rec-stat-div"></div>
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val amber">3</span><span class="sami-rec-stat-lbl">Moderate risk</span></div>
-                  <div class="sami-rec-stat-div"></div>
-                  <div class="sami-rec-stat"><span class="sami-rec-stat-val green">2</span><span class="sami-rec-stat-lbl">Auto-fixable</span></div>
-                </div>
-                <div class="sami-rec-cta">View policy recommendations →</div>
-              </div>
+  <!-- 2. Behavioral Anomalies -->
+  <div class="sami-rec-card sami-rec-anomaly" onclick="openRecModal('anomalyRec')">
+    <div class="src-accent" style="background:var(--indigo);"></div>
+    <div class="src-top">
+      <div class="src-icon-wrap" style="background:rgba(99,102,241,0.12);">
+        <span style="font-size:18px;">📡</span>
+      </div>
+      <div class="src-badge src-badge-indigo">1 High Risk</div>
+    </div>
+    <div class="src-hero" style="color:var(--indigo);">3</div>
+    <div class="src-hero-label">BEHAVIORAL ANOMALIES</div>
+    <div class="src-spark-wrap"><canvas class="src-spark" id="sparkAnomaly"></canvas></div>
+    <div class="src-mini-stats">
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--red);">1</span><span class="src-mini-lbl">High risk</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--amber);">2</span><span class="src-mini-lbl">Investigating</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--green);">1</span><span class="src-mini-lbl">Auto-isolated</span></div>
+    </div>
+    <div class="src-cta" style="color:var(--indigo);">Investigate anomalies →</div>
+  </div>
 
-            </div><!-- /sami-recs-grid -->
+  <!-- 3. Policy Recommendations -->
+  <div class="sami-rec-card sami-rec-policy" onclick="openRecModal('policyRec')">
+    <div class="src-accent" style="background:var(--blue);"></div>
+    <div class="src-top">
+      <div class="src-icon-wrap" style="background:rgba(59,130,246,0.12);">
+        <span style="font-size:18px;">🛡️</span>
+      </div>
+      <div class="src-badge src-badge-blue">3 Critical</div>
+    </div>
+    <div class="src-hero" style="color:var(--blue);">6</div>
+    <div class="src-hero-label">POLICY GAPS FOUND</div>
+    <div class="src-spark-wrap"><canvas class="src-spark" id="sparkPolicy"></canvas></div>
+    <div class="src-mini-stats">
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--red);">3</span><span class="src-mini-lbl">Critical</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--amber);">3</span><span class="src-mini-lbl">Moderate</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--green);">2</span><span class="src-mini-lbl">Auto-fixable</span></div>
+    </div>
+    <div class="src-cta" style="color:var(--blue);">View recommendations →</div>
+  </div>
+
+  <!-- 4. Upcoming Renewals -->
+  <div class="sami-rec-card sami-rec-renewal" onclick="openRecModal('renewalRec')">
+    <div class="src-accent" style="background:var(--orange);"></div>
+    <div class="src-top">
+      <div class="src-icon-wrap" style="background:rgba(249,115,22,0.12);">
+        <span style="font-size:18px;">💰</span>
+      </div>
+      <div class="src-badge src-badge-orange">4 Expiring ≤30d</div>
+    </div>
+    <div class="src-hero" style="color:var(--orange);">$287K</div>
+    <div class="src-hero-label">ARR AT RENEWAL RISK</div>
+    <div class="src-spark-wrap"><canvas class="src-spark" id="sparkRenewal"></canvas></div>
+    <div class="src-mini-stats">
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--red);">4</span><span class="src-mini-lbl">Expiring ≤30d</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val">3</span><span class="src-mini-lbl">SKUs ready</span></div>
+      <div class="src-mini-div"></div>
+      <div class="src-mini-stat"><span class="src-mini-val" style="color:var(--green);">$142K</span><span class="src-mini-lbl">Protected</span></div>
+    </div>
+    <div class="src-cta" style="color:var(--orange);">View upcoming renewals →</div>
+  </div>
+
+</div><!-- /sami-recs-grid -->
 
 
             <!-- Tenants -->
@@ -3957,317 +3918,57 @@ function resetSamiChat() {
 
 
 
-/* ════════════════════════════════════════════════════════
-   ELEVATE 2026 GUIDED DEMO ENGINE
-   ════════════════════════════════════════════════════════ */
-
-const DEMO_STEPS = [
-  {
-    id: 'hero', title: 'The Morning Briefing', subtitle: 'What SAMI resolved while you slept',
-    screen: 'partner', targetSelector: '.partner-hero-wrap',
-    tps: [
-      'This is the first thing a partner sees — a plain-English summary of what SAMI did autonomously overnight.',
-      '44 of 52 issues resolved without human touch. 8 items flagged for human judgment. The 84.6% autonomy rate is the headline metric.',
-      'The Export digest button lets partners send this summary directly to customers — instant proof of value.'
-    ],
-    why: 'Competitors show dashboards full of alerts. SAMI shows outcomes. The shift from "here\'s what happened" to "here\'s what we fixed" is the core differentiation.',
-    partner_tp: 'Your customers don\'t want to hear about 52 threats. They want to hear that 44 were handled before they even knew about them. SAMI gives you that story every morning.',
-    customer_tp: 'This replaces the morning security briefing that used to take your IT team 45 minutes to compile. Auto-generated, accurate, and actionable.'
-  },
-  {
-    id: 'stats', title: 'Five Numbers That Tell the Story', subtitle: 'Metrics that matter to every stakeholder',
-    screen: 'partner', targetSelector: '.stats-5',
-    tps: [
-      '44 auto-resolved — issues SAMI handled without any human intervention this week.',
-      '18.4 hours saved — direct labor deflection. For an MSP with 20 technicians, this is real margin recovery.',
-      '$142K ARR protected — devices that would have churned or escalated if not caught by SAMI.',
-      '4.2 minutes average resolution — down 87% from Q3 2025 baseline. SLA compliance becomes effortless.',
-      '8 needs attention — out of 52 total events, only 8 required human judgment. The rest were autonomous.'
-    ],
-    why: 'Each stat maps to a different buyer persona — operations cares about hours saved, finance about ARR protected, security about resolution time.',
-    partner_tp: 'These five numbers are your QBR slides. Every quarter, SAMI generates proof of value you can put in front of your customer without building a spreadsheet.',
-    customer_tp: 'Your security posture summarised in five numbers. No manual reporting — SAMI produces this automatically every day.'
-  },
-  {
-    id: 'autonomy', title: 'The Autonomy Banner', subtitle: 'The most powerful sentence in enterprise security',
-    screen: 'partner', targetSelector: '.autonomy-banner',
-    tps: [
-      '84.6% autonomy rate — SAMI handled 44 of 52 issues without any human in the loop.',
-      'The donut chart makes the ratio visceral. Green is autonomous. Red is human judgment required.',
-      'The inline alert "8 alerts need your immediate attention" tells exactly where to focus — not across 52 events, but 8 curated decisions.',
-      'This banner updates in real time. Every time SAMI resolves something, the autonomy rate climbs.'
-    ],
-    why: 'No competitor can show this number. Palo Alto, Fortinet, CrowdStrike — they all surface alerts. SAMI surfaces resolutions. The autonomy rate is the proof point.',
-    partner_tp: 'When you walk into a renewal, show this number. 84.6% of security events resolved without your team touching them. That is the ROI conversation.',
-    customer_tp: 'This tells you exactly how much SAMI is doing on your behalf — and the 8 places where you still need to make a call today.'
-  },
-  {
-    id: 'attention', title: 'Needs Attention — The Judgment Queue', subtitle: 'Only what matters, with everything you need to decide',
-    screen: 'partner', targetSelector: '.card:has(.ji)',
-    tps: [
-      'SAMI does not surface 52 alerts. It surfaces 8 — the ones that genuinely need human judgment because they are outside its autonomous authority.',
-      'Each item has full context: the tenant, the priority, what SAMI has already staged, and a one-click action. No pivot tables, no log diving.',
-      'The CVE item: firmware is already staged, rollback is pre-armed, maintenance window is set. The SE just hits Approve.',
-      'Labels like URGENT, ANTICIPATE INTENT, CLOSE THE LOOP map to SAMI\'s four autonomous reasoning modes.',
-      'The queue is ordered by priority and business impact — not by timestamp.'
-    ],
-    why: 'The average SOC analyst spends 3.5 hours per day triaging alerts. SAMI reduces that to 8 decisions. This is the labor deflection story.',
-    partner_tp: 'Your Level 1 team stops triaging. SAMI does it. Your people move up the value chain — or you reduce headcount. Either way, margin improves.',
-    customer_tp: 'Your IT team used to spend mornings in a flood of alerts. Now they spend 15 minutes reviewing 8 curated decisions. SAMI handles everything else.'
-  },
-  {
-    id: 'action', title: 'One-Click Decision Making', subtitle: 'From alert to resolution in under 60 seconds',
-    screen: 'partner', targetSelector: '.btn-primary',
-    tps: [
-      'Click Approve on the CVE item. SAMI shows exactly what it will do, when, and what the rollback plan is.',
-      'The SE approves in one click. SAMI executes the firmware push at 02:00 ET, validates the patch, logs the action to the compliance trail.',
-      'SAMI knows what it can do autonomously and what needs sign-off. It asks only when required.',
-      'The success state shows in real-time: patch applied, CVE closed, tenant notified, audit log updated.'
-    ],
-    why: 'Compliance teams love the audit trail. Every action SAMI takes is logged, timestamped, and exportable. SOC 2, HIPAA, GDPR — SAMI makes compliance reporting automatic.',
-    partner_tp: 'Your customers ask "what happened at 2am?" SAMI has the answer — logged, documented, and ready. No more guessing or log diving.',
-    customer_tp: 'You approved this at 11pm from your phone. SAMI executed at 2am. You woke up secure. That is the level of control we are giving you.'
-  },
-  {
-    id: 'activity', title: 'Live Activity Stream', subtitle: 'SAMI\'s autonomous actions, happening right now',
-    screen: 'partner', targetSelector: '#streamList',
-    tps: [
-      'Every entry here represents something SAMI resolved without human intervention. This is the autonomy engine running live.',
-      'Resolved (green): issue fixed. Deflected (blue): support ticket auto-answered. Healed (purple): config drift corrected. Blocked (red): threat quarantined.',
-      'The timestamps tell the story — SAMI works at 3am, 4am, 6am. It does not sleep or miss alerts on a Friday afternoon.',
-      'Partners can export this stream and share it with customers as a proof-of-work log.'
-    ],
-    why: 'This is visual proof that SAMI is always on. More compelling than any SLA document — customers can see the work happening in real time.',
-    partner_tp: 'Show this in your QBR. "Here is every action SAMI took on your behalf last week." It is better than any service report you have ever produced.',
-    customer_tp: 'This is your security team\'s activity log — except it runs 24/7 and never misses anything. Every entry is a threat neutralised or issue resolved.'
-  },
-  {
-    id: 'renewals', title: 'Upcoming Renewals — Revenue Intelligence', subtitle: 'SAMI identifies revenue at risk before it is too late',
-    screen: 'partner', targetSelector: '.sami-rec-renewal',
-    tps: [
-      '$287K ARR at renewal risk across 4 accounts expiring in the next 30 days. SAMI surfaces this proactively.',
-      'Pre-built renewal SKUs are already staged. The SE clicks Send proposal and the right package goes to the right contact automatically.',
-      'Acme Corp: 7 days, AT-RISK. This is the account to call today — SAMI has already flagged it as highest priority.',
-      'Partners using SAMI for renewal intelligence report significantly higher renewal rates because they anticipate instead of react.'
-    ],
-    why: 'For MSPs and channel partners, churn is the silent margin killer. SAMI\'s renewal intelligence turns a reactive process into a proactive revenue motion.',
-    partner_tp: 'Stop losing renewals because someone forgot to follow up. SAMI tracks every expiry across every tenant and tells you who to call, when, and with what proposal.',
-    customer_tp: 'Your account team gets a heads-up 30 days before anything expires. No surprise lapses, no coverage gaps, no frantic last-minute renewals.'
-  },
-  {
-    id: 'policies', title: 'Policy Recommendations', subtitle: 'SAMI finds the gaps before attackers do',
-    screen: 'partner', targetSelector: '.sami-rec-policy',
-    tps: [
-      '6 policies flagged across tenants — 3 critical, 3 moderate, 2 auto-fixable by SAMI right now.',
-      'Weak admin passwords on 4 firewalls: SAMI can push the updated policy in 3 clicks, zero downtime, no reboot required.',
-      'Configuration drift on Riverside Mfg: 2 firewalls drifted 14 settings from the approved baseline. Restore template is staged.',
-      'This is continuous compliance monitoring — not a quarterly audit, but a live posture score across every device in every tenant.'
-    ],
-    why: 'The average enterprise has 17 misconfigured security controls at any given time. SAMI finds them continuously and either fixes them or surfaces them for approval.',
-    partner_tp: 'Offer compliance-as-a-service on top of SAMI. Every month, your customer gets a posture report and a remediation plan. SAMI generates both automatically.',
-    customer_tp: 'SAMI found 6 policy gaps your team did not know existed. It fixed 2 automatically. The other 4 are waiting for your one-click approval.'
-  },
-  {
-    id: 'tenants', title: 'Tenant Health — MSP Command Centre', subtitle: 'Every customer, every device, at a glance',
-    screen: 'partner', targetSelector: '.tenants-grid',
-    tps: [
-      'For MSPs managing multiple customers, this is the master view. 12 tenants, 647 total devices, colour-coded by health status.',
-      'Acme Corp: P1 active incident. Westfield IT and Northgate Health: P2 warning. Everything else: green.',
-      'Click any tenant to drill into their specific device health, open alerts, license status, and SAMI activity.',
-      'This replaces the 12 separate portals an MSP would otherwise check individually every morning.'
-    ],
-    why: 'Multi-tenant visibility is the #1 MSP pain point. SAMI consolidates every customer into a single pane of glass — no context switching, no missed alerts.',
-    partner_tp: 'How many portals does your team check every morning? SAMI replaces all of them. One screen, every customer, real-time.',
-    customer_tp: 'Your IT partner can see every device you own in real time. When something goes wrong, they know before you do.'
-  },
-  {
-    id: 'internal', title: 'Internal Intelligence — PM View', subtitle: 'Market signals and competitive intelligence, AI-generated',
-    screen: 'internal', targetSelector: '.int-pm-inner',
-    tps: [
-      'Switch to Internal mode to reveal the PM dashboard — competitive research, market trends, bug intelligence, and feature recommendations.',
-      'Cloud Security is growing at 73% CAGR. SAMI surfaces this from live market data and maps it directly to SonicWall\'s portfolio gaps.',
-      'Competitive Research: $1.47M ARR lost last quarter to Palo Alto, Fortinet, and CrowdStrike. SAMI identifies why and recommends what to build.',
-      'Expand the market trends widget to reveal AI-generated feature recommendations with build timelines and ROI projections.'
-    ],
-    why: 'SAMI\'s intelligence layer is not just operational — it is strategic. PMs get AI-generated market analysis, competitive positioning, and feature prioritisation recommendations.',
-    partner_tp: 'This is the roadmap conversation. SonicWall is not just reacting to the market — SAMI is reading it and telling us what to build next.',
-    customer_tp: 'You are investing in a vendor that uses AI to stay ahead of the threat landscape — not just to respond to it.'
-  },
-  {
-    id: 'sami_chat', title: 'Ask SAMI — Conversational Intelligence', subtitle: 'Natural language access to every insight in the platform',
-    screen: 'partner', targetSelector: '.sami-panel',
-    tps: [
-      'Click Ask SAMI to open the conversational interface. Type or click a suggestion chip.',
-      '"Show renewals at risk this month" — SAMI instantly surfaces the 4 at-risk accounts with ARR values and days to expiry.',
-      '"Which tenants have unpatched CVEs?" — SAMI cross-references device firmware, CVE databases, and patch availability in seconds.',
-      '"Summarise this week\'s autonomous actions" — SAMI generates a plain-English digest you can paste directly into a customer email.',
-      'The History tab shows previous conversations including full AI Policy Creation workflows — from question to deployed policy in one conversation.'
-    ],
-    why: 'Natural language access democratises security intelligence. A non-technical account manager can ask the same questions as a senior SE and get the same quality answers.',
-    partner_tp: 'Your junior team members can now answer customer questions that used to require your most senior SE. SAMI is the knowledge multiplier.',
-    customer_tp: 'You do not need to know how to read a firewall log to get insights from SAMI. Just ask the question in plain English.'
-  }
-];
-
-let demoActive = false;
-let demoStep = 0;
-let demoAudience = 'partner'; // 'partner' or 'customer'
-let demoCollapsed = false;
-
-/* ── Splash ── */
-function startDemo(audience) {
-  demoAudience = audience;
-  document.getElementById('demoSplash').style.display = 'none';
-  document.getElementById('demoToolbar').classList.add('active');
-  document.getElementById('demoSpotlight').style.display = 'block';
-  demoActive = true;
-  demoStep = 0;
-  renderDemoStep();
-}
-
-function selectAudience(type) {
-  demoAudience = type;
-  document.querySelectorAll('.demo-audience-btn').forEach(b => b.classList.remove('selected'));
-  document.getElementById('demoAudienceBtn_' + type).classList.add('selected');
-  document.getElementById('demoStartBtn').classList.add('visible');
-}
-
-/* ── Navigation ── */
-function demoNext() {
-  if (demoStep < DEMO_STEPS.length - 1) { demoStep++; renderDemoStep(); }
-  else { clearSpotlight(); document.getElementById("demoNextBtn").textContent = "Done ✓"; }
-}
-
-function demoPrev() {
-  if (demoStep > 0) { demoStep--; renderDemoStep(); }
-}
-
-function demoReset() {
-  demoStep = 0;
-  demoActive = false;
-  document.getElementById('demoToolbar').classList.remove('active');
-  document.getElementById('demoSpotlight').style.display = 'none';
-  document.getElementById('demoSplash').style.display = 'flex';
-  clearSpotlight();
-}
-
-function toggleDemoCollapse() {
-  demoCollapsed = !demoCollapsed;
-  var tb = document.getElementById('demoToolbar');
-  var btn = document.getElementById('demoCollapseBtn');
-  if (demoCollapsed) { tb.classList.add('collapsed'); btn.textContent = '▲'; }
-  else { tb.classList.remove('collapsed'); btn.textContent = '▼'; }
-}
-
-/* ── Render step ── */
-function renderDemoStep() {
-  var step = DEMO_STEPS[demoStep];
-  var total = DEMO_STEPS.length;
-
-  // Navigate to correct screen
-  if (step.screen === 'internal') {
-    setMode('internal');
-    setTimeout(function() {
-      var intBtn = document.querySelector('.int-tab-btn[data-tab="int-pm"]');
-      if (intBtn) intBtn.click();
-    }, 300);
-  } else {
-    setMode('partner');
-    // Navigate to right section
-    var sectionTarget = step.id === 'tenants' ? 'tenants-section' : 'overview-section';
-    var sbEl = document.getElementById(sectionTarget === 'tenants-section' ? 'sb-tenants' : 'sb-overview');
-    if (sbEl) setSbActive(sbEl, sectionTarget);
+/* ── Widget sparkline charts ── */
+function initWidgetSparklines() {
+  function makeSparkline(id, data, color, fill) {
+    var canvas = document.getElementById(id);
+    if (!canvas) return;
+    new Chart(canvas.getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
+        datasets: [{
+          data: data,
+          borderColor: color,
+          backgroundColor: fill,
+          borderWidth: 2,
+          pointRadius: 0,
+          tension: 0.45,
+          fill: true
+        }]
+      },
+      options: {
+        responsive: false,
+        animation: { duration: 1000 },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+        scales: { x: { display: false }, y: { display: false } },
+        elements: { line: { borderCapStyle: 'round' } }
+      }
+    });
   }
 
-  // Update toolbar header
-  document.getElementById('demoStepCounter').textContent = 'Step ' + (demoStep+1) + ' of ' + total;
-  document.getElementById('demoStepTitle').textContent = step.title;
-  document.getElementById('demoStepSubtitle').textContent = step.subtitle;
-  document.getElementById('demoAudiencePill').textContent = demoAudience === 'partner' ? 'Partner / MSP' : 'End Customer';
-  document.getElementById('demoAudiencePill').className = 'demo-audience-pill ' + (demoAudience === 'partner' ? 'dap-partner' : 'dap-customer');
-
-  // Progress bar
-  document.getElementById('demoProgressFill').style.width = ((demoStep+1)/total*100) + '%';
-
-  // Talking points
-  var tpHtml = step.tps.map(function(tp) {
-    return '<li class="demo-tp-item"><div class="demo-tp-dot"></div><span>' + tp + '</span></li>';
-  }).join('');
-  document.getElementById('demoTpList').innerHTML = tpHtml;
-
-  // Audience talking point
-  var audienceTp = demoAudience === 'partner' ? step.partner_tp : step.customer_tp;
-  document.getElementById('demoAudienceTp').innerHTML = '<span class="demo-why-label">Say to ' + (demoAudience === 'partner' ? 'Partner / MSP' : 'End Customer') + '</span>' + audienceTp;
-
-  // Why it matters
-  document.getElementById('demoWhyMatters').innerHTML = '<span class="demo-why-label">Why it matters</span>' + step.why;
-
-  // Nav buttons
-  document.getElementById('demoPrevBtn').style.opacity = demoStep === 0 ? '0.3' : '1';
-  document.getElementById('demoNextBtn').textContent = demoStep === total-1 ? 'Finish →' : 'Next →';
-
-  // Spotlight
-  // Step-specific actions before spotlight
-  if (step.id === 'sami_chat') {
-    // Open SAMI panel so it's visible and can be spotlighted
-    var samiPanel = document.querySelector('.sami-panel');
-    var contentScroll = document.querySelector('.content-scroll');
-    if (samiPanel) {
-      samiPanel.classList.add('open');
-      if (contentScroll) contentScroll.classList.add('sami-open');
-    }
-    setTimeout(function() { spotlightTarget('.sami-panel'); }, 500);
-  } else {
-    // Close SAMI panel on all other steps
-    var samiPanel = document.querySelector('.sami-panel');
-    var contentScroll = document.querySelector('.content-scroll');
-    if (samiPanel) {
-      samiPanel.classList.remove('open');
-      if (contentScroll) contentScroll.classList.remove('sami-open');
-    }
-    setTimeout(function() { spotlightTarget(step.targetSelector); }, 400);
-  }
-
-  // Uncollapse on step change
-  if (demoCollapsed) toggleDemoCollapse();
+  // CVE trend — rising then spike
+  makeSparkline('sparkCve',    [2,2,3,3,4,4,5], '#EF4444', 'rgba(239,68,68,0.08)');
+  // Anomaly — irregular spikes
+  makeSparkline('sparkAnomaly',[1,0,1,2,1,2,3], '#6366F1', 'rgba(99,102,241,0.08)');
+  // Policy gaps — gradually increasing
+  makeSparkline('sparkPolicy', [3,4,4,5,5,6,6], '#3B82F6', 'rgba(59,130,246,0.08)');
+  // Renewals ARR risk — building up
+  makeSparkline('sparkRenewal',[120,145,160,190,220,260,287], '#F97316', 'rgba(249,115,22,0.08)');
 }
 
-/* ── Tab switching ── */
-function switchDemoTab(tab) {
-  document.querySelectorAll('.demo-tp-tab').forEach(function(t) { t.classList.remove('active'); });
-  document.querySelectorAll('.demo-tp-panel').forEach(function(p) { p.classList.remove('active'); });
-  document.getElementById('demoTab_' + tab).classList.add('active');
-  document.getElementById('demoPanel_' + tab).classList.add('active');
+// Init after charts are ready
+if (typeof Chart !== 'undefined') {
+  initWidgetSparklines();
+} else {
+  window.addEventListener('load', initWidgetSparklines);
 }
 
-/* ── Spotlight ── */
-function spotlightTarget(selector) {
-  var cutout = document.getElementById('demoSpotlightCutout');
-  if (!selector) { clearSpotlight(); return; }
-  var el = document.querySelector(selector);
-  if (!el) { clearSpotlight(); return; }
-  var rect = el.getBoundingClientRect();
-  var pad = 8;
-  cutout.style.display = 'block';
-  cutout.style.top    = (rect.top    - pad) + 'px';
-  cutout.style.left   = (rect.left   - pad) + 'px';
-  cutout.style.width  = (rect.width  + pad*2) + 'px';
-  cutout.style.height = (rect.height + pad*2) + 'px';
-}
 
-function clearSpotlight() {
-  var cutout = document.getElementById('demoSpotlightCutout');
-  if (cutout) cutout.style.display = 'none';
-}
 
-/* ── Leave behind ── */
-function showLeaveBehind() {
-  document.getElementById('demoLeaveBehind').classList.add('open');
-  clearSpotlight();
-}
-function closeLeaveBehind() {
-  document.getElementById('demoLeaveBehind').classList.remove('open');
-}
+
+
+
 
 </script>
 
@@ -4576,70 +4277,210 @@ function closeLeaveBehind() {
   </div>
 </div>
 
-<!-- ════ ELEVATE 2026 DEMO LAYER ════ -->
+<!-- ══ CVE VULNERABILITY MODAL ══ -->
+<div class="rec-overlay" id="cveRecOverlay" onclick="if(event.target===this)closeRecModal('cveRecOverlay')">
+  <div class="rec-modal">
+    <div class="rec-modal-head">
+      <div>
+        <div class="rec-modal-title">🔍 CVE Vulnerability Report</div>
+        <div class="rec-modal-sub">5 vulnerabilities · 2 critical · 3 patches ready to deploy</div>
+      </div>
+      <button class="rec-close" onclick="closeRecModal('cveRecOverlay')">✕</button>
+    </div>
+    <div class="rec-modal-body">
 
-<!-- Splash Screen -->
-<div class="demo-splash" id="demoSplash">
-  <div class="demo-elevate-badge">✦ Elevate 2026 · SE Demo Mode</div>
-  <div class="demo-splash-logo">S</div>
-  <div class="demo-splash-title">SAMI Vision Demo</div>
-  <div class="demo-splash-sub">SonicWall Autonomous Management Intelligence · North Star</div>
-  <div class="demo-splash-audience">
-    <button class="demo-audience-btn" id="demoAudienceBtn_partner" onclick="selectAudience('partner')">
-      <span class="demo-audience-icon">🤝</span>
-      MSP / Channel Partner
-    </button>
-    <button class="demo-audience-btn" id="demoAudienceBtn_customer" onclick="selectAudience('customer')">
-      <span class="demo-audience-icon">🏢</span>
-      End Customer
-    </button>
+
+
+      <!-- Summary pills -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;">
+        <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#DC2626;font-variant-numeric:tabular-nums;">2</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin-top:2px;">Critical</div>
+        </div>
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#0F172A;font-variant-numeric:tabular-nums;">3</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#64748B;margin-top:2px;">High</div>
+        </div>
+        <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#15803D;font-variant-numeric:tabular-nums;">3</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#15803D;margin-top:2px;">Patches Ready</div>
+        </div>
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#0F172A;font-variant-numeric:tabular-nums;">8</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#64748B;margin-top:2px;">Devices</div>
+        </div>
+      </div>
+
+      <!-- Bulk action -->
+      <div style="display:flex;justify-content:flex-end;margin-bottom:12px;">
+        <button class="btn btn-primary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('enforceOverlay')">⚡ Patch all auto-fixable (3)</button>
+      </div>
+
+      <!-- CVE list — plain language for FP SLT -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #FECACA;background:#FEF2F2;">
+          <div style="width:4px;height:44px;border-radius:2px;background:#DC2626;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#DC2626;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">Critical</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">3 firewalls · Acme Corp</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:1px;">Hackers could take full control of 3 Acme firewalls remotely</div>
+            <div style="font-size:11.5px;color:#64748B;">A known software flaw allows outsiders to break in without a password. SAMI has a security update staged and ready.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('approveOverlay')" style="flex-shrink:0;white-space:nowrap;">Apply fix →</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #FECACA;background:#FEF2F2;">
+          <div style="width:4px;height:44px;border-radius:2px;background:#DC2626;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#DC2626;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">Critical</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">2 devices · Westfield IT</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:1px;">VPN logins can be bypassed without a valid username or password</div>
+            <div style="font-size:11.5px;color:#64748B;">Attackers could enter the network as if they were an authorised employee. Patch available — no downtime required.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('approveOverlay')" style="flex-shrink:0;white-space:nowrap;">Apply fix →</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #E2E8F0;background:#F8FAFC;">
+          <div style="width:4px;height:44px;border-radius:2px;background:#64748B;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#64748B;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">High</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">1 device · Northgate Health</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:1px;">Network connection can be deliberately cut off by an attacker</div>
+            <div style="font-size:11.5px;color:#64748B;">A flaw allows someone to crash the firewall's VPN service, taking staff offline. HIPAA environment — priority recommended.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('approveOverlay')" style="flex-shrink:0;white-space:nowrap;">Apply fix →</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #E2E8F0;background:#F8FAFC;">
+          <div style="width:4px;height:44px;border-radius:2px;background:#64748B;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#64748B;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">High</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">1 device · Brighton Labs</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:1px;">A regular user could gain full administrator access to the firewall</div>
+            <div style="font-size:11.5px;color:#64748B;">A flaw in the management portal allows someone with basic access to elevate their own permissions. SAMI can restrict access immediately.</div>
+          </div>
+          <button class="btn btn-secondary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('enforceOverlay')" style="flex-shrink:0;white-space:nowrap;">Restrict access →</button>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #E2E8F0;background:#F8FAFC;">
+          <div style="width:4px;height:44px;border-radius:2px;background:#64748B;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#64748B;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">High</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">1 device · Summit Financial</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:1px;">Sensitive network configuration data is visible without logging in</div>
+            <div style="font-size:11.5px;color:#64748B;">An open diagnostic port exposes internal settings to anyone who looks. SAMI can close it automatically in under 60 seconds.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="closeRecModal('cveRecOverlay');openActionModal('enforceOverlay')" style="flex-shrink:0;white-space:nowrap;">Close port now →</button>
+        </div>
+
+      </div>
+    </div>
   </div>
-  <button class="demo-start-btn" id="demoStartBtn" onclick="startDemo(demoAudience)">Start guided demo →</button>
 </div>
 
-<!-- Demo Toolbar -->
-<div class="demo-toolbar" id="demoToolbar">
-  <div class="demo-progress-bar">
-    <div class="demo-progress-fill" id="demoProgressFill" style="width:0%"></div>
-  </div>
-  <div class="demo-toolbar-head">
-    <div>
-      <div class="demo-step-counter" id="demoStepCounter">Step 1 of 11</div>
-      <div class="demo-step-title" id="demoStepTitle">—</div>
-      <div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:1px;" id="demoStepSubtitle">—</div>
+<!-- ══ BEHAVIORAL ANOMALY MODAL ══ -->
+<div class="rec-overlay" id="anomalyRecOverlay" onclick="if(event.target===this)closeRecModal('anomalyRecOverlay')">
+  <div class="rec-modal">
+    <div class="rec-modal-head">
+      <div>
+        <div class="rec-modal-title">📡 Behavioral Anomaly Report</div>
+        <div class="rec-modal-sub">3 anomalies detected · 1 high risk · 1 endpoint auto-isolated</div>
+      </div>
+      <button class="rec-close" onclick="closeRecModal('anomalyRecOverlay')">✕</button>
     </div>
-    <span class="demo-audience-pill dap-partner" id="demoAudiencePill">Partner / MSP</span>
-    <div class="demo-toolbar-btns" style="margin-left:auto;">
-      <button class="demo-reset-btn" onclick="demoReset()">↺ Reset</button>
-      <button class="demo-nav-btn" id="demoPrevBtn" onclick="demoPrev()">← Back</button>
-      <button class="demo-nav-btn primary" id="demoNextBtn" onclick="demoNext()">Next →</button>
-      <button class="demo-collapse-btn" id="demoCollapseBtn" onclick="toggleDemoCollapse()">▼</button>
-    </div>
-  </div>
-  <div class="demo-toolbar-body">
-    <div class="demo-tp-tabs">
-      <button class="demo-tp-tab active" id="demoTab_talking" onclick="switchDemoTab('talking')">Talking Points</button>
-      <button class="demo-tp-tab" id="demoTab_audience" onclick="switchDemoTab('audience')">For Your Audience</button>
-      <button class="demo-tp-tab" id="demoTab_why" onclick="switchDemoTab('why')">Why It Matters</button>
-    </div>
-    <div class="demo-tp-panel active" id="demoPanel_talking">
-      <ul class="demo-tp-list" id="demoTpList"></ul>
-    </div>
-    <div class="demo-tp-panel" id="demoPanel_audience">
-      <div class="demo-why" id="demoAudienceTp"></div>
-    </div>
-    <div class="demo-tp-panel" id="demoPanel_why">
-      <div class="demo-why" id="demoWhyMatters"></div>
+    <div class="rec-modal-body">
+
+
+
+      <!-- Summary pills -->
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;">
+        <div style="background:#FEF2F2;border:1px solid #FECACA;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#DC2626;font-variant-numeric:tabular-nums;">1</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#DC2626;margin-top:2px;">High Risk</div>
+        </div>
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#0F172A;font-variant-numeric:tabular-nums;">2</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#64748B;margin-top:2px;">Medium Risk</div>
+        </div>
+        <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#15803D;font-variant-numeric:tabular-nums;">1</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#15803D;margin-top:2px;">Auto-Isolated</div>
+        </div>
+        <div style="background:#F8FAFC;border:1px solid #E2E8F0;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:24px;font-weight:900;color:#0F172A;font-variant-numeric:tabular-nums;">72%</div>
+          <div style="font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#64748B;margin-top:2px;">Avg Confidence</div>
+        </div>
+      </div>
+
+      <!-- Anomaly list — unified horizontal layout -->
+      <div style="display:flex;flex-direction:column;gap:8px;">
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #FECACA;background:#FEF2F2;">
+          <div style="width:4px;height:52px;border-radius:2px;background:#DC2626;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#DC2626;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">High</span>
+              <span style="font-size:12px;font-weight:700;color:#0F172A;">Northgate Health</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">87% confidence · 34 min ago</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:2px;">Unusual outbound transfer — 47GB to unknown IP</div>
+            <div style="font-size:11.5px;color:#64748B;">23.5× above baseline · Tor exit node · After-hours · <strong style="color:#15803D;">Auto-isolated by SAMI</strong></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+            <button class="btn btn-primary btn-sm" onclick="closeRecModal('anomalyRecOverlay');openActionModal('enforceOverlay')" style="white-space:nowrap;">🔒 Block uploads</button>
+            <button class="btn btn-secondary btn-sm" onclick="closeRecModal('anomalyRecOverlay');openActionModal('restoreOverlay')" style="white-space:nowrap;">Isolate endpoints</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #E2E8F0;background:#F8FAFC;">
+          <div style="width:4px;height:52px;border-radius:2px;background:#64748B;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#64748B;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">Medium</span>
+              <span style="font-size:12px;font-weight:700;color:#0F172A;">Acme Corp</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">61% confidence · 2 hrs ago</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:2px;">After-hours admin login — new geolocation</div>
+            <div style="font-size:11.5px;color:#64748B;">01:47 AM · Romania · First login from this country · MFA passed</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+            <button class="btn btn-primary btn-sm" onclick="closeRecModal('anomalyRecOverlay');openActionModal('enforceOverlay')" style="white-space:nowrap;">Force re-auth</button>
+            <button class="btn btn-secondary btn-sm" onclick="closeRecModal('anomalyRecOverlay');openActionModal('escalateOverlay')" style="white-space:nowrap;">Notify tenant</button>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:10px;border:1px solid #E2E8F0;background:#F8FAFC;">
+          <div style="width:4px;height:52px;border-radius:2px;background:#64748B;flex-shrink:0;"></div>
+          <div style="flex:1;min-width:0;">
+            <div style="display:flex;align-items:center;gap:6px;margin-bottom:3px;">
+              <span style="font-size:10px;font-weight:800;background:#64748B;color:white;padding:1px 7px;border-radius:4px;text-transform:uppercase;">Medium</span>
+              <span style="font-size:12px;font-weight:700;color:#0F172A;">Riverside Mfg</span>
+              <span style="font-size:11px;color:#64748B;margin-left:auto;">58% confidence · 6 hrs ago</span>
+            </div>
+            <div style="font-size:13px;font-weight:700;color:#0F172A;margin-bottom:2px;">Internal network scanning — lateral movement pattern</div>
+            <div style="font-size:11.5px;color:#64748B;">340 sequential probes · Nmap signature · Single endpoint · No scan scheduled</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:5px;flex-shrink:0;">
+            <button class="btn btn-primary btn-sm" onclick="closeRecModal('anomalyRecOverlay');openActionModal('enforceOverlay')" style="white-space:nowrap;">Isolate endpoint</button>
+            <button class="btn btn-secondary btn-sm" style="white-space:nowrap;">Forensic scan</button>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
-
-<!-- Spotlight -->
-<div class="demo-spotlight" id="demoSpotlight" style="display:none;">
-  <div class="demo-spotlight-cutout" id="demoSpotlightCutout" style="display:none;"></div>
-</div>
-
-<!-- Leave Behind -->
 
 
 </body></html>
